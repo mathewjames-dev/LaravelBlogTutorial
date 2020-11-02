@@ -1,0 +1,1 @@
+Hello everybody this is a view file.
