@@ -2,26 +2,25 @@
 
 @section('css')
     <!-- Our CSS files can go here when needed -->
-    <style>
-        <!-- Our CSS files can go here when needed -->
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-    </style>
 @stop
 
 @section('content')
     <!-- Our main page content will go into this section -->
     @if(count($blogs) > 0)
         <div class="container">
-            @foreach($blogs as $blog)
-                <div class="blog-container">
-                    <h2>{{ $blog->title }}</h2>
-                    <p>{{ $blog->description }}</p>
-                    <a href="/blog/{{ $blog->url }}">View Blog</a>
+            <div class="row">
+                @foreach($blogs as $blog)
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $blog->title }}</h5>
+                            <p class="card-text text-muted">{{ $blog->description }}</p>
+                            <a href="/blog/{{ $blog->url }}" class="card-link">View Blog</a>
+                        </div>
+                    </div>
                 </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
     @endif
 @stop
