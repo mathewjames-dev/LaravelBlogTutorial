@@ -7,6 +7,11 @@ use App\Blog;
 
 class BlogController extends Controller
 {
+    public function __construct()
+    {
+        // This is restricting the controller to authenticated
+        $this->middleware('auth');
+    }
 
     // GET [/blog]
     public function index()
