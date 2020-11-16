@@ -6,23 +6,20 @@
 
 @section('content')
     <!-- Our main page content will go into this section -->
-    @if(count($blogs) > 0)
-        <div class="container">
-            <div class="row">
-                @foreach($blogs as $blog)
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $blog->title }}</h5>
-                            <p class="card-text text-muted">{{ $blog->description }}</p>
-                            <a href="/blog/{{ $blog->url }}" class="card-link">View Blog</a>
-                        </div>
+    <div class="row text-center">
+        @if(count($blogs) > 0)
+            @foreach($blogs as $blog)
+                <div class="col-sm-4">
+                    <div class="thumbnail">
+                        <img src="blogimage.jpg" alt="Blog Image" width="400" height="300">
+                        <p><strong>{{ $blog->title }}</strong></p>
+                        <p>{{ $blog->description }}</p>
+                        <a href="/blog/{{ $blog->url }}" class="card-link">View Blog</a>
                     </div>
                 </div>
-                @endforeach
-            </div>
-        </div>
-    @endif
+            @endforeach
+        @endif
+      </div>
 @stop
 
 @section('js')
