@@ -1,1 +1,1 @@
-Hello everybody this is a view file.
+@extends('layouts.template')
