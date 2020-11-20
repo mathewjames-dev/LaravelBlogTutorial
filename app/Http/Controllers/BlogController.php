@@ -40,7 +40,9 @@ class BlogController extends Controller
         $rules = [
             'title' => 'required|max:50',
             'description' => 'required|max:140',
-            'url' => 'required|max:50'
+            'url' => 'required|max:50',
+            'meta_title' => 'required|max:60',
+            'meta_description' => 'required|max:160'
         ];
 
         // We will utilize the validator class to verify the request data against our rule set.
