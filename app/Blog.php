@@ -14,6 +14,6 @@ class Blog extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'description', 'url', 'live'
+        'title', 'description', 'url', 'live', 'meta_title', 'meta_description'
     ];
 }
