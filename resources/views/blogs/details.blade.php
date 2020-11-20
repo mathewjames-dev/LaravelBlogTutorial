@@ -1,5 +1,13 @@
 @extends('layouts.template')
 
+@section('meta-title')
+    {{ $blog->meta_title }}
+@stop
+
+@section('meta-description')
+    {{ $blog->meta_description }}
+@stop
+
 @section('css')
     <!-- Our CSS files can go here when needed -->
 @stop

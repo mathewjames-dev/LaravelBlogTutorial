@@ -38,15 +38,27 @@
             </div>
 
             <div class="form-group">
-                <label for="description">Blog Title</label>
+                <label for="description">Blog Description</label>
                 <input type="text" class="form-control" name="description" value="{{ isset($blog) ? $blog->description : '' }}" aria-describedby="description" 
                 placeholder="Enter Blog Description">
             </div>
 
             <div class="form-group">
-                <label for="url">Blog Title</label>
+                <label for="url">Blog URL</label>
                 <input type="text" class="form-control" name="url" value="{{ isset($blog) ? $blog->url : '' }}" aria-describedby="url" 
                 placeholder="Enter Blog URL">
+            </div>
+
+            <div class="form-group">
+                <label for="url">Blog Meta Title</label>
+                <input type="text" class="form-control" name="meta_title" value="{{ isset($blog) ? $blog->meta_title : '' }}" aria-describedby="meta_title" 
+                placeholder="Enter Blog Meta Title">
+            </div>
+
+            <div class="form-group">
+                <label for="url">Blog Meta Description</label>
+                <input type="text" class="form-control" name="meta_description" value="{{ isset($blog) ? $blog->meta_description : '' }}" aria-describedby="meta_description" 
+                placeholder="Enter Blog Meta Description">
             </div>
 
             <div class="custom-control custom-checkbox">
@@ -54,7 +66,7 @@
                 <label class="custom-control-label" for="live">Check this to set the blog live</label>
             </div>
 
-            <button type="submit">Save</button>
+            <button class="form-control" type="submit">Save</button>
         </form>
     </div>
 @stop
