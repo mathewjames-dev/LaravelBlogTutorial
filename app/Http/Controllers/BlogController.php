@@ -33,7 +33,7 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        if($data["live"]) $data["live"] = 1;
+        if(isset($data["live"])) $data["live"] = 1;
 
         // These are the rules for the blog creation / update form. 
         // !! We will be able to put these into a validator later on. !!
@@ -42,7 +42,8 @@ class BlogController extends Controller
             'description' => 'required|max:140',
             'url' => 'required|max:50',
             'meta_title' => 'required|max:60',
-            'meta_description' => 'required|max:160'
+            'meta_description' => 'required|max:160',
+            'header_image' => 'required|image|mimes:jpg,png,jpeg'
         ];
 
         // We will utilize the validator class to verify the request data against our rule set.
@@ -59,6 +60,10 @@ class BlogController extends Controller
         }else{
             $blog = new Blog;
         }
+
+        // Then we can utilize the store function on the request to put the image into the relevant public folder.
+        // We're overwriting the header_image value in the data array with the path to the image.
+        $data['header_image'] = $request->file('header_image')->store('/assets/blogs/header_images', ['disk' => 'public']);
 
         // Utilize the already named fields on the view file to fill the blog data automatically, then saving.
         $blog->fill($data)->save();

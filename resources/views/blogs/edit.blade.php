@@ -27,9 +27,21 @@
 @section('content')
     <!-- Our main page content will go into this section -->
     <div class="container">
-        <form method="POST" action="{{ route('blog.store') }}">
+        <form method="POST" action="{{ route('blog.store') }}" enctype="multipart/form-data">
             {{ csrf_field() }}
             <input type="hidden" name="id" value="{{ isset($blog) ? $blog->id : '' }}">
+
+            <div class="form-group">
+                <label for="header_image">Blog Header Image</label>
+
+                @if(isset($blog) && !is_null($blog->header_image))
+                    <p>Current Header Image:</p>
+                    <img style="width: 300px;" src="/{{ $blog->header_image }}" 
+                        alt="{{ isset($blog) ? $blog->title : '' }}">
+                @endif
+
+                <input type="file" class="form-control" name="header_image"/>
+            </div>
 
             <div class="form-group">
                 <label for="title">Blog Title</label>
