@@ -33,8 +33,24 @@
             <li><a href="/blog/create">Create Blog</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            @if(Auth::user())
+              <li>
+                <a href="/user/{{ Auth::user()->id }}">
+                  <span class="glyphicon glyphicon-user"></span> Account Settings
+                </a>
+              </li>
+            @else
+              <li>
+                <a href="/register">
+                  <span class="glyphicon glyphicon-user"></span> Sign Up
+                </a>
+              </li>
+              <li>
+                <a href="/login">
+                  <span class="glyphicon glyphicon-log-in"></span> Login
+                </a>
+              </li>
+            @endif
           </ul>
         </div>
       </nav>
