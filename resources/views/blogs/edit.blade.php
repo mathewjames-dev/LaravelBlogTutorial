@@ -27,6 +27,11 @@
 @section('content')
     <!-- Our main page content will go into this section -->
     <div class="container">
+
+        @if(Session::has('error'))
+            <div class="alert alert-danger">{{ Session::get('error') }}</div>
+        @endif
+
         <form method="POST" action="{{ route('blog.store') }}" enctype="multipart/form-data">
             {{ csrf_field() }}
             <input type="hidden" name="id" value="{{ isset($blog) ? $blog->id : '' }}">

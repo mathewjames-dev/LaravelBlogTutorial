@@ -36,7 +36,7 @@ class BlogController extends Controller
         if(isset($data["live"])) $data["live"] = 1;
 
         // These are the rules for the blog creation / update form. 
-        // !! We will be able to put these into a validator later on. !!
+        // !! We will be able to put these into a custom validator later on. !!
         $rules = [
             'title' => 'required|max:50',
             'description' => 'required|max:140',
