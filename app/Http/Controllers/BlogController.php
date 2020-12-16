@@ -45,6 +45,7 @@ class BlogController extends Controller
             'meta_description' => 'required|max:160',
             'header_image' => 'required|image|mimes:jpg,png,jpeg'
         ];
+        
 
         // We will utilize the validator class to verify the request data against our rule set.
         $validator = \validator()->make($data, $rules);
@@ -61,10 +62,15 @@ class BlogController extends Controller
             $blog = new Blog;
         }
 
-        // Then we can utilize the store function on the request to put the image into the relevant public folder.
-        // We're overwriting the header_image value in the data array with the path to the image.
-        $data['header_image'] = $request->file('header_image')->store('/assets/blogs/header_images', ['disk' => 'public']);
-
+        // Check if a file is present in the form submission.
+        // Also check if the upload of the file was successful.
+        if($request->hasFile('header_image') && $request->header_image->isValid())
+        {
+            // Store the image to the public disk in the given folder.
+            $data['header_image'] = 
+                $request->header_image->store('/assets/blogs/header_images', ['disk' => 'public']);
+        }
+   
         // Utilize the already named fields on the view file to fill the blog data automatically, then saving.
         $blog->fill($data)->save();
 
